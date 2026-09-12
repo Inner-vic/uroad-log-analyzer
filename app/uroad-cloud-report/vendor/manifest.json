@@ -1,0 +1,403 @@
+{
+  "license": {
+    "path": "LICENSE.zstandard.txt",
+    "sha256": "788fe85e53724a40b299051c4abc9cf74d42b27e7968325b80891c25f79adb4b"
+  },
+  "package": "zstandard",
+  "runtimes": [
+    {
+      "abi_tag": "cp39",
+      "files": [
+        {
+          "path": "zstandard/__init__.py",
+          "sha256": "5dd909e0b60a946a0b08deaf57545d17dc044f5df4040beec55f7ef6c6fecd11",
+          "size": 7235
+        },
+        {
+          "path": "zstandard/__init__.pyi",
+          "sha256": "8f9f3d95bde368d7483c73a28c24fadc14df69673f145703346d3d327ac8a030",
+          "size": 13973
+        },
+        {
+          "path": "zstandard/_cffi.cpython-39-x86_64-linux-gnu.so",
+          "sha256": "1e2690c23b8d97fdb8945a311fc31a910e3416e398f20a10543c45158e5e654e",
+          "size": 12135000
+        },
+        {
+          "path": "zstandard/backend_c.cpython-39-x86_64-linux-gnu.so",
+          "sha256": "4878e32cc66fdafd4807b1d3587643bf1f533dcf1f3ee720a5569c2f46f5d167",
+          "size": 11600560
+        },
+        {
+          "path": "zstandard/backend_cffi.py",
+          "sha256": "0b268ae515d511531f1c6e76068123efb8f725b4f62484aa11e887fadc1975ce",
+          "size": 152627
+        },
+        {
+          "path": "zstandard/py.typed",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size": 0
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/licenses/LICENSE",
+          "sha256": "788fe85e53724a40b299051c4abc9cf74d42b27e7968325b80891c25f79adb4b",
+          "size": 1484
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/METADATA",
+          "sha256": "03d37736b26b9ae48451dd17026d93dffbd252fb708c1a2a9ae1be0c0966de92",
+          "size": 3275
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/RECORD",
+          "sha256": "c3879a8411a39da8ef4f2a939b074921c3655e950e39b18c40e53a3cec1bdf33",
+          "size": 954
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/top_level.txt",
+          "sha256": "27ec23f78a4f69d6388a915a6a7ad8065acc6e53927a01184bca3f2dda20ae95",
+          "size": 10
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/WHEEL",
+          "sha256": "03849d8e06c8059fe48d3b04b8e711f1f0a954a57975ecfcc23793fe4a63a10b",
+          "size": 147
+        }
+      ],
+      "platform": "linux_x86_64_glibc_manylinux_2_17",
+      "python_tag": "cp39",
+      "runtime": "runtimes/cp39",
+      "wheel": "zstandard-0.25.0-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "wheel_sha256": "53e08b2445a6bc241261fea89d065536f00a581f02535f8122eba42db9375530"
+    },
+    {
+      "abi_tag": "cp310",
+      "files": [
+        {
+          "path": "zstandard/__init__.py",
+          "sha256": "5dd909e0b60a946a0b08deaf57545d17dc044f5df4040beec55f7ef6c6fecd11",
+          "size": 7235
+        },
+        {
+          "path": "zstandard/__init__.pyi",
+          "sha256": "8f9f3d95bde368d7483c73a28c24fadc14df69673f145703346d3d327ac8a030",
+          "size": 13973
+        },
+        {
+          "path": "zstandard/_cffi.cpython-310-x86_64-linux-gnu.so",
+          "sha256": "2c0ff10cbb6d680a840d48088dd829dd698d09188fcfeb07fed52efdd4a197a9",
+          "size": 12135008
+        },
+        {
+          "path": "zstandard/backend_c.cpython-310-x86_64-linux-gnu.so",
+          "sha256": "b69074539e35393ec9d76a96972b998013f6201ef6f1f59b44856973435d7b3d",
+          "size": 11604504
+        },
+        {
+          "path": "zstandard/backend_cffi.py",
+          "sha256": "0b268ae515d511531f1c6e76068123efb8f725b4f62484aa11e887fadc1975ce",
+          "size": 152627
+        },
+        {
+          "path": "zstandard/py.typed",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size": 0
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/licenses/LICENSE",
+          "sha256": "788fe85e53724a40b299051c4abc9cf74d42b27e7968325b80891c25f79adb4b",
+          "size": 1484
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/METADATA",
+          "sha256": "03d37736b26b9ae48451dd17026d93dffbd252fb708c1a2a9ae1be0c0966de92",
+          "size": 3275
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/RECORD",
+          "sha256": "a982be13e96c5a437e44fe8d7907a3d6d9b90b7c9876c6051253602f1903bef6",
+          "size": 956
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/top_level.txt",
+          "sha256": "27ec23f78a4f69d6388a915a6a7ad8065acc6e53927a01184bca3f2dda20ae95",
+          "size": 10
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/WHEEL",
+          "sha256": "0d39ca8cce4e2272715800e8777890c96c5671d1be791c31cc6c30db7eacc296",
+          "size": 151
+        }
+      ],
+      "platform": "linux_x86_64_glibc_manylinux_2_17",
+      "python_tag": "cp310",
+      "runtime": "runtimes/cp310",
+      "wheel": "zstandard-0.25.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "wheel_sha256": "4b6d83057e713ff235a12e73916b6d356e3084fd3d14ced499d84240f3eecee0"
+    },
+    {
+      "abi_tag": "cp311",
+      "files": [
+        {
+          "path": "zstandard/__init__.py",
+          "sha256": "5dd909e0b60a946a0b08deaf57545d17dc044f5df4040beec55f7ef6c6fecd11",
+          "size": 7235
+        },
+        {
+          "path": "zstandard/__init__.pyi",
+          "sha256": "8f9f3d95bde368d7483c73a28c24fadc14df69673f145703346d3d327ac8a030",
+          "size": 13973
+        },
+        {
+          "path": "zstandard/_cffi.cpython-311-x86_64-linux-gnu.so",
+          "sha256": "0cd90a4eeedf490a3207a8ca0eca69b73b887b464509407ebc058007d9f94e55",
+          "size": 12135008
+        },
+        {
+          "path": "zstandard/backend_c.cpython-311-x86_64-linux-gnu.so",
+          "sha256": "532a86d3bc0f420a4f7038bf6039c93b55e6f149d7a314b17dbb27750788964d",
+          "size": 11614400
+        },
+        {
+          "path": "zstandard/backend_cffi.py",
+          "sha256": "0b268ae515d511531f1c6e76068123efb8f725b4f62484aa11e887fadc1975ce",
+          "size": 152627
+        },
+        {
+          "path": "zstandard/py.typed",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size": 0
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/licenses/LICENSE",
+          "sha256": "788fe85e53724a40b299051c4abc9cf74d42b27e7968325b80891c25f79adb4b",
+          "size": 1484
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/METADATA",
+          "sha256": "03d37736b26b9ae48451dd17026d93dffbd252fb708c1a2a9ae1be0c0966de92",
+          "size": 3275
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/RECORD",
+          "sha256": "5e1bdd7c1585a28b967152b89ff6a57b9b3e774a6f2428d1c94354a58a1210a3",
+          "size": 956
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/top_level.txt",
+          "sha256": "27ec23f78a4f69d6388a915a6a7ad8065acc6e53927a01184bca3f2dda20ae95",
+          "size": 10
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/WHEEL",
+          "sha256": "fc216f202603999940607b7c2fb667de7f8118b8fc76464b40fa76d8f8b2e491",
+          "size": 151
+        }
+      ],
+      "platform": "linux_x86_64_glibc_manylinux_2_17",
+      "python_tag": "cp311",
+      "runtime": "runtimes/cp311",
+      "wheel": "zstandard-0.25.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "wheel_sha256": "9300d02ea7c6506f00e627e287e0492a5eb0371ec1670ae852fefffa6164b072"
+    },
+    {
+      "abi_tag": "cp312",
+      "files": [
+        {
+          "path": "zstandard/__init__.py",
+          "sha256": "5dd909e0b60a946a0b08deaf57545d17dc044f5df4040beec55f7ef6c6fecd11",
+          "size": 7235
+        },
+        {
+          "path": "zstandard/__init__.pyi",
+          "sha256": "8f9f3d95bde368d7483c73a28c24fadc14df69673f145703346d3d327ac8a030",
+          "size": 13973
+        },
+        {
+          "path": "zstandard/_cffi.cpython-312-x86_64-linux-gnu.so",
+          "sha256": "d35f6859f659ee9d19b2a8c27fec8e8942167f82a81c4338638b2c9d55ecfb6b",
+          "size": 12138320
+        },
+        {
+          "path": "zstandard/backend_c.cpython-312-x86_64-linux-gnu.so",
+          "sha256": "7eb41c8b36cd99ed6c67e39f8574e42472687a14c6038c512bb3a90b7082616d",
+          "size": 11552544
+        },
+        {
+          "path": "zstandard/backend_cffi.py",
+          "sha256": "0b268ae515d511531f1c6e76068123efb8f725b4f62484aa11e887fadc1975ce",
+          "size": 152627
+        },
+        {
+          "path": "zstandard/py.typed",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size": 0
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/licenses/LICENSE",
+          "sha256": "788fe85e53724a40b299051c4abc9cf74d42b27e7968325b80891c25f79adb4b",
+          "size": 1484
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/METADATA",
+          "sha256": "03d37736b26b9ae48451dd17026d93dffbd252fb708c1a2a9ae1be0c0966de92",
+          "size": 3275
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/RECORD",
+          "sha256": "cc734a958c651ed0ba10399cf6373420f54454acf07dfc257a3cc03cd448c2a1",
+          "size": 956
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/top_level.txt",
+          "sha256": "27ec23f78a4f69d6388a915a6a7ad8065acc6e53927a01184bca3f2dda20ae95",
+          "size": 10
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/WHEEL",
+          "sha256": "692806d05e2b18f66d5748931087f2e9db47aba83aecbcdedee2df934bd69fcf",
+          "size": 151
+        }
+      ],
+      "platform": "linux_x86_64_glibc_manylinux_2_17",
+      "python_tag": "cp312",
+      "runtime": "runtimes/cp312",
+      "wheel": "zstandard-0.25.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "wheel_sha256": "5a56ba0db2d244117ed744dfa8f6f5b366e14148e00de44723413b2f3938a902"
+    },
+    {
+      "abi_tag": "cp313",
+      "files": [
+        {
+          "path": "zstandard/__init__.py",
+          "sha256": "5dd909e0b60a946a0b08deaf57545d17dc044f5df4040beec55f7ef6c6fecd11",
+          "size": 7235
+        },
+        {
+          "path": "zstandard/__init__.pyi",
+          "sha256": "8f9f3d95bde368d7483c73a28c24fadc14df69673f145703346d3d327ac8a030",
+          "size": 13973
+        },
+        {
+          "path": "zstandard/_cffi.cpython-313-x86_64-linux-gnu.so",
+          "sha256": "425683fabd106f55d5ba91e675dcbfc4aca5e8ac3d244e57df7a4d52e41e1dd3",
+          "size": 12138184
+        },
+        {
+          "path": "zstandard/backend_c.cpython-313-x86_64-linux-gnu.so",
+          "sha256": "f7a5ec06ea6b404effbb11b18fd63ec9039292be834ee99fb5b4ca1b780de201",
+          "size": 11552736
+        },
+        {
+          "path": "zstandard/backend_cffi.py",
+          "sha256": "0b268ae515d511531f1c6e76068123efb8f725b4f62484aa11e887fadc1975ce",
+          "size": 152627
+        },
+        {
+          "path": "zstandard/py.typed",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size": 0
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/licenses/LICENSE",
+          "sha256": "788fe85e53724a40b299051c4abc9cf74d42b27e7968325b80891c25f79adb4b",
+          "size": 1484
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/METADATA",
+          "sha256": "03d37736b26b9ae48451dd17026d93dffbd252fb708c1a2a9ae1be0c0966de92",
+          "size": 3275
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/RECORD",
+          "sha256": "a13d83d014054ece61fba569a91bb268e166ad32485d5891e3a72bd61df2ec48",
+          "size": 956
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/top_level.txt",
+          "sha256": "27ec23f78a4f69d6388a915a6a7ad8065acc6e53927a01184bca3f2dda20ae95",
+          "size": 10
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/WHEEL",
+          "sha256": "b0b9f19229a01999e41df8951b408a5e4ddc6c4ce69240541eb90a2443bda3a8",
+          "size": 151
+        }
+      ],
+      "platform": "linux_x86_64_glibc_manylinux_2_17",
+      "python_tag": "cp313",
+      "runtime": "runtimes/cp313",
+      "wheel": "zstandard-0.25.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "wheel_sha256": "8e735494da3db08694d26480f1493ad2cf86e99bdd53e8e9771b2752a5c0246a"
+    },
+    {
+      "abi_tag": "cp314",
+      "files": [
+        {
+          "path": "zstandard/__init__.py",
+          "sha256": "5dd909e0b60a946a0b08deaf57545d17dc044f5df4040beec55f7ef6c6fecd11",
+          "size": 7235
+        },
+        {
+          "path": "zstandard/__init__.pyi",
+          "sha256": "8f9f3d95bde368d7483c73a28c24fadc14df69673f145703346d3d327ac8a030",
+          "size": 13973
+        },
+        {
+          "path": "zstandard/_cffi.cpython-314-x86_64-linux-gnu.so",
+          "sha256": "ce2f600a783f68cc502d481f4a47bc346f24c6dfcfacd350a5a332588b0e786e",
+          "size": 11436616
+        },
+        {
+          "path": "zstandard/backend_c.cpython-314-x86_64-linux-gnu.so",
+          "sha256": "3bdb3610606775217e8bcbe18605e8eec4bd201583283e8a4914bdc9aa7a1b8a",
+          "size": 10983168
+        },
+        {
+          "path": "zstandard/backend_cffi.py",
+          "sha256": "0b268ae515d511531f1c6e76068123efb8f725b4f62484aa11e887fadc1975ce",
+          "size": 152627
+        },
+        {
+          "path": "zstandard/py.typed",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size": 0
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/licenses/LICENSE",
+          "sha256": "788fe85e53724a40b299051c4abc9cf74d42b27e7968325b80891c25f79adb4b",
+          "size": 1484
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/METADATA",
+          "sha256": "03d37736b26b9ae48451dd17026d93dffbd252fb708c1a2a9ae1be0c0966de92",
+          "size": 3275
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/RECORD",
+          "sha256": "34c5a4e8a6ac9466cb96ef88607b312c0fa5e37ebfd6691d6e78c035acc10047",
+          "size": 956
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/top_level.txt",
+          "sha256": "27ec23f78a4f69d6388a915a6a7ad8065acc6e53927a01184bca3f2dda20ae95",
+          "size": 10
+        },
+        {
+          "path": "zstandard-0.25.0.dist-info/WHEEL",
+          "sha256": "0cc9e2d875975c6e286adf18e9b015baefb196407e82b1d08aab13bbe94b1e5b",
+          "size": 190
+        }
+      ],
+      "platform": "linux_x86_64_glibc_manylinux_2_17",
+      "python_tag": "cp314",
+      "runtime": "runtimes/cp314",
+      "wheel": "zstandard-0.25.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "wheel_sha256": "e09bb6252b6476d8d56100e8147b803befa9a12cea144bbe629dd508800d1ad0"
+    }
+  ],
+  "schema_version": 1,
+  "source": "https://pypi.org/project/zstandard/0.25.0/",
+  "supported": "CPython 3.9-3.14, Linux x86-64, glibc (manylinux_2_17)",
+  "version": "0.25.0"
+}

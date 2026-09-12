@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0",
+  "logicalBus": "CHCAN1",
+  "signals": [
+    {
+      "key": "vehicleSpeed",
+      "name": "VehSpd_BCh1",
+      "canId": "0x12A",
+      "payloadBytes": 32,
+      "ascChannels": [2],
+      "channelMapping": "Production EEA3 msg_xcu validation: logical CHCAN1 vehicle speed is carried on physical channel 2; other zone mirrors are excluded",
+      "startByte": 2,
+      "lengthBytes": 2,
+      "byteOrder": "big",
+      "factor": 0.015625,
+      "offset": 0,
+      "unit": "km/h",
+      "confidence": "validated",
+      "validation": "563 points aligned to uroad speed; examples 0x0060=1.50 km/h and 0x0070=1.75 km/h"
+    },
+    {
+      "key": "gear",
+      "name": "ActuGearSta",
+      "canId": "0x108",
+      "payloadBytes": 32,
+      "ascChannels": [1],
+      "channelMapping": "PZCU sample validation: logical CHCAN1 is carried on ASC channel 1 for this message",
+      "startBit": 73,
+      "lengthBits": 3,
+      "byteOrder": "little",
+      "factor": 1,
+      "offset": 0,
+      "unit": "state",
+      "confidence": "unverified_enum",
+      "validation": "需求文档期望业务值 D/R/P/N，但当前源数据出现数字编码；缺少权威 DBC/ARXML 枚举映射，保留原始值"
+    },
+    {
+      "key": "steeringAngle",
+      "name": "EpsStrgAng",
+      "canId": "0x106",
+      "payloadBytes": 16,
+      "ascChannels": [2, 9],
+      "channelMapping": "PZCU sample exposes byte-identical mirrors on ASC channels 2 and 9; deduplicate as logical CHCAN1",
+      "startByte": 2,
+      "lengthBytes": 2,
+      "byteOrder": "big",
+      "factor": 0.1,
+      "offset": -780,
+      "unit": "deg",
+      "confidence": "inferred",
+      "validation": "candidate definition inferred from continuity and physical range; replace when an authoritative DBC/ARXML is available"
+    }
+  ]
+}

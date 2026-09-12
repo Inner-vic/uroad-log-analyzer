@@ -1,0 +1,79 @@
+# Local secrets and machine-specific configuration
+**/settings.json
+!/app/uroad-cloud-report/settings.json.example
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Curated application source lives in app/
+/uroad-cloud-report/
+/cloud-baseline/
+/supervisor/
+/ad-p99-analysis/
+/uroad-log-download/
+/uroad-log-analysis/
+/uroad-report/
+/cheyun-canlog-download/
+/tools/
+/research/
+
+# Private data, generated output, archives, and release bundles
+/runs/
+/uroad-report-runs/
+/live-test-*/
+/archive/
+/deploy/
+/examples/
+/*.tar
+/*.tar.gz
+/*.zip
+/*.7z
+/*.rar
+*.asc
+*.zst
+*.blf
+*.mf4
+*.pcap
+*.pcapng
+*.parquet
+
+# Personal and authentication artifacts kept outside version control
+/lark-*.png
+/*简历*.pdf
+/*简历*.docx
+
+# Local planning and agent state
+/.agents/
+/.claude/
+/_bmad/
+/_bmad-output/
+
+# Python and test caches
+__pycache__/
+*.py[cod]
+*.py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.venv/
+venv/
+
+# Editors and operating systems
+.idea/
+.vscode/
+*.swp
+*.swo
+Thumbs.db
+.DS_Store
+
+# README preview source is generated locally; only the PNG is tracked
+/docs/assets/report-preview-source.html
