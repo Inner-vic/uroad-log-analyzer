@@ -10,7 +10,7 @@
   <img alt="uroad version" src="https://img.shields.io/badge/uroad-2026.09.07.1-2563EB?style=flat-square">
   <img alt="Python versions" src="https://img.shields.io/badge/Python-3.9%E2%80%933.14-0F172A?style=flat-square&logo=python&logoColor=white">
   <img alt="test count" src="https://img.shields.io/badge/tests-82%20passed-16A34A?style=flat-square">
-  <img alt="repository visibility" src="https://img.shields.io/badge/repository-internal-F59E0B?style=flat-square">
+  <img alt="repository visibility" src="https://img.shields.io/badge/repository-public-2563EB?style=flat-square">
 </p>
 
 <p align="center">
