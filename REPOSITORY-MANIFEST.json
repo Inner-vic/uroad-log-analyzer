@@ -31,8 +31,8 @@
       "bytes": 962
     },
     "README.md": {
-      "sha256": "823bced212bb0b259e55bcf65ef83b36e8c561794c12bb77b5a7267e6e5d6904",
-      "bytes": 3960
+      "sha256": "4407558a917da6317cff0009a183a27a297c8a1a01274a4fc18d505fbd692a32",
+      "bytes": 4366
     },
     "SOURCE-MANIFEST.json": {
       "sha256": "37364c78d23c5c45726eea98ee9bb1b688de43d7d79d27c38525d4829ddaf0d7",
@@ -61,6 +61,10 @@
     "docs/operations.md": {
       "sha256": "1442e4187b53ce392679ef6c81cd3968c01a164c91a624f09f7b3e8016f9ee59",
       "bytes": 2638
+    },
+    "docs/project-guide.md": {
+      "sha256": "d324e1e7ca97414c6dfa667a9dba48f7caab78b1377b1fbd5c4dbee9197c0655",
+      "bytes": 4141
     },
     "docs/upstream-supervisor-contract.md": {
       "sha256": "c2930a127b339b2ecafbbd759507e10ca048b4df5ef2df4102786fb1a35bb1e9",

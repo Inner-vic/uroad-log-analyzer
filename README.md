@@ -1,73 +1,61 @@
 # 日志分析 · Uroad Log Analyzer
 
-根据同一车辆的 VIN 和完整时间范围，从获准车云来源获取 Uroad 与 CAN 日志，完成联合解析、生成 HTML 标准报告，并通过 CC Connect 交付回原始会话。
+[实习项目总览](https://github.com/Inner-vic/internship-projects) · [使用与验证](docs/project-guide.md)
 
-源码版本为 `2026.11.03.8`。本项目独立维护日志分析的代码、部署和任务数据；实际使用需要 Windows 运行环境、车云权限及飞书/CC Connect 接入。
+把车辆日志请求变成同窗联合分析与可离线阅读的 HTML 证据报告。
 
-## 输入、处理与交付
+## 解决的问题
 
-- **输入**：VIN、时间范围，以及可选的附加问题；未标注时区时按北京时间解析，无法确认的时间先补齐。
-- **处理**：完整时间窗一次取数，Uroad/CAN 分支并行。同一报告保持同环境，查询异常与成功但无数据分别处理。
-- **输出**：经内容与路径校验的 HTML 标准报告，以及任务、下载和交付的可追溯记录。
-- **追问**：先交付标准报告，再基于本任务保留数据回答附加问题；默认保留期为 14 天。
+车辆问题排查需要把自然语言中的 VIN 和时间，转换为可信的数据查询，再关联 Uroad 处理过程、CAN 信号、异常事件和报告交付。只给出一段日志或一张图，难以说明结论来自哪里，也难以安全地继续追问。
 
-在已接入的会话中可以发送以下请求。VIN 为合成示例，使用时替换为获准车辆及实际时间：
+项目把请求、来源、解析、报告和送达串成独立任务，保留同一时间范围内的证据关系。
 
-```text
-日志分析 DEM0VEH1CLEX00001，2026-11-03 09:53 至 10:10
-请在标准报告后分析这个时段的相关异常。
-```
+## 实现了什么
 
-入站身份和来源消息由接入层提供，不能从正文猜测或手造。任务排队、计算完成和报告送达分别记录；交付失败时补发已有校验报告。
+- 从同一车辆和完整时间窗获取 Uroad/CAN 数据，保留来源环境与下载清单。
+- 通过流式 CAN、分批 Parquet 和任务内排序去重处理日志，生成可关联的时序数据。
+- 生成自包含 HTML 报告，展示耗时、帧率、原因事件、车辆信号与帧级摘录。
+- 保存队列、领取、计算和交付状态，支持标准报告后的同任务追问。
 
-## 获取源码与校验
+## 报告展示
 
-```powershell
-git clone https://github.com/Inner-vic/uroad-log-analyzer.git
-cd uroad-log-analyzer
-python -B -X utf8 tools/check_repository.py
-```
+![原报告渲染器生成的交互图表区域；顶部明确标注合成数据](https://raw.githubusercontent.com/Inner-vic/internship-projects/main/assets/uroad-report-demo.jpg)
 
-校验无需连接车云或飞书。真实运行要求 **Windows x64、CPython 3.13**，依赖固定在 [requirements.txt](workspace/.agents/skills/uroad-cloud-report/requirements.txt)。
+上图由本仓库的报告渲染器生成，使用[公开合成输入](https://github.com/Inner-vic/internship-projects/blob/main/demos/uroad-analysis.synthetic.json)，只展示报告呈现与交互能力，不代表真实车辆或性能测试结果。生成脚本见[展示材料工具](https://github.com/Inner-vic/internship-projects/blob/main/tools/create_demonstrations.py)。
 
-## 新环境准备
+## 实现架构
 
-以下为路径示例：将解释器路径替换为自己的 CPython 3.13，目标工作区必须尚不存在。
+![日志分析的主要模块、执行顺序和关键边界](https://raw.githubusercontent.com/Inner-vic/internship-projects/main/assets/architecture/uroad-log-analyzer.svg)
 
-```powershell
-python -B -X utf8 tools/prepare_workspace.py --workspace "D:/workspaces/uroad" --base-python "C:/Path/To/Python313/python.exe"
-```
+## 关键工程设计
 
-工具复制工作区源码、创建独立 venv 和私有配置样例；不安装业务依赖、不授权或启动任务。随后按[部署说明](docs/deployment.md)完成依赖、车云身份、原生附件发送和宿主接入，并验证首次完整交付。
+### 1. 来源身份贯穿整条链路
 
-独立部署与共享 Supervisor 接入应选择一套宿主/执行槽，避免重复调度。源码中仅包含共享宿主的[接入契约](docs/upstream-supervisor-contract.md)。
+请求正文与可信入站上下文分开保存，任务按来源消息做幂等。每项任务独立持有输入、下载、报告和追问数据；相同车辆与时间的新请求仍有自己的任务身份，避免按“最近报告”串用数据。
 
-## 源码结构
+### 2. 用流式和批处理控制日志开销
 
-| 路径 | 内容 |
+Uroad 与 CAN 分支并行，CAN 采用流式解析，Parquet 备用链路按批处理并在任务内排序、去重。来源回执和内容摘要保留下来，报告中的序列能够追溯到实际输入。
+
+### 3. 计算完成与报告送达分别建模
+
+报告要先通过内容与工件校验，原生附件发送还要匹配来源、文件摘要和真实回执。交付失败只补发已经校验的报告；附加问题在标准报告之后，基于原任务保留数据回答。
+
+## 实现与验证范围
+
+仓库包含完整业务、报告模板和离线测试；实际取数与发送依赖获准的车云和消息平台。源码同步时的测试及环境边界见[公开验证说明](https://github.com/Inner-vic/uroad-log-analyzer/blob/main/PUBLICATION.md)。合成展示页没有执行真实查询、调度或消息发送。
+
+## 源码导读
+
+| 源码 | 关注的实现 |
 | --- | --- |
-| `workspace/.agents/skills/uroad-cloud-report/` | 主业务、报告模板、信号定义及测试 |
-| `workspace/.agents/skills/chassis-business-routing/` | 公共意图和时间解析 |
-| `workspace/AGENTS.md` | 消息来源、调度和交付约束 |
-| `examples/`、`tools/` | 配置样例、候选准备、检查及调度安装 |
-| `SOURCE-*.json`、`REPOSITORY-MANIFEST.json` | 源码来源和完整性清单 |
+| [workspace/.agents/skills/uroad-cloud-report/scripts/task_registry.py](workspace/.agents/skills/uroad-cloud-report/scripts/task_registry.py) | 持久注册与来源幂等 |
+| [workspace/.agents/skills/uroad-cloud-report/scripts/scheduler.py](workspace/.agents/skills/uroad-cloud-report/scripts/scheduler.py) | 领取、调度与公平队列 |
+| [workspace/.agents/skills/uroad-cloud-report/scripts/stream_can_signals.py](workspace/.agents/skills/uroad-cloud-report/scripts/stream_can_signals.py) | 流式 CAN 解析 |
+| [workspace/.agents/skills/uroad-cloud-report/scripts/build_html_report.py](workspace/.agents/skills/uroad-cloud-report/scripts/build_html_report.py) | 离线交互报告渲染 |
 
-公共路由所需的其他业务解析模块不代表该业务的执行服务已安装。
+## 项目资料
 
-## 测试与文档
+使用步骤、依赖和本地验证见[使用与验证](docs/project-guide.md)；源码来源与验证范围见[发布说明](https://github.com/Inner-vic/uroad-log-analyzer/blob/main/PUBLICATION.md)。本页用于介绍实习阶段的实现与设计，具体结论以所链接的代码和证据为准。
 
-安装固定依赖后，使用候选的独立解释器运行离线用例，例如：
-
-```powershell
-& "D:/workspaces/uroad/runtime/uroad-python/Scripts/python.exe" -B -X utf8 tools/run_tests.py --suite portable
-```
-
-默认不带 `--suite portable` 时运行完整离线组。GitHub 的 [Source checks](.github/workflows/source-checks.yml) 检查源码与清单；本次同步的离线验证范围见[发布说明](PUBLICATION.md)。真实车云取数、Windows 调度与首单交付需在自己的环境验收。
-
-- [架构与数据流](docs/architecture.md)
-- [配置与外部依赖](docs/configuration.md)
-- [部署与回退](docs/deployment.md)
-- [状态、追问和失败恢复](docs/operations.md)
-- [飞书接入](docs/lark-asgard-integration.md)与[版本变更](CHANGELOG.md)
-
-凭据、真实车辆日志、会话标识、运行状态和报告不进入源码仓库。
+[走查测试](https://github.com/Inner-vic/walkthrough-test)展示双窗规则走查，[时延分析](https://github.com/Inner-vic/ad-p99-analysis)展示上游查询与性能对比；各自保留任务与运行边界。
