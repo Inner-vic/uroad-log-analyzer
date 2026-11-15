@@ -1,2 +1,0 @@
-# Source/development declaration only. Production uses the verified offline vendor bundle.
-zstandard==0.25.0

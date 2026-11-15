@@ -1,0 +1,470 @@
+{
+  "schema": "uroad-source-repository-v1",
+  "version": "2026.11.03.8",
+  "files": {
+    ".gitattributes": {
+      "sha256": "292aa782a1288d320ddb20290893674a65c09f0f1aae882a4a1561c0185efe43",
+      "bytes": 86
+    },
+    ".github/workflows/source-checks.yml": {
+      "sha256": "de35d2ef722a943211ef083584802ee1bf186f342d8b318a2fc6edc4081e3f31",
+      "bytes": 535
+    },
+    ".gitignore": {
+      "sha256": "c44751d3068feea17c3d8a2e68060cb3c40acf47e695c7b94ed34929a7ba368b",
+      "bytes": 733
+    },
+    ".gitlab-ci.yml": {
+      "sha256": "4e17a08c319dca607b86d86071b853adcd0ca09ab7f8ad741c3ef71cd8bdd5ba",
+      "bytes": 617
+    },
+    "CHANGELOG.md": {
+      "sha256": "2c3dacb6ff1f501f3fbec693502edb1a63f7fd57c251b4b4dfd71010e2431cf0",
+      "bytes": 648
+    },
+    "CONTRIBUTING.md": {
+      "sha256": "5b7512e4da89ba62f03a3fdbb9252380fd3b4b39e17ca29b55e6308e838381e4",
+      "bytes": 1089
+    },
+    "PUBLICATION.md": {
+      "sha256": "52045c0145a3b64bc8c8c45eb2353c03af8432e371e74d5ab54dc022c0b33360",
+      "bytes": 962
+    },
+    "README.md": {
+      "sha256": "036a77bb03e582e8349086f8a66c22dee8d85e7e4a2ba3ec204f91f5a9129c36",
+      "bytes": 6451
+    },
+    "SOURCE-MANIFEST.json": {
+      "sha256": "37364c78d23c5c45726eea98ee9bb1b688de43d7d79d27c38525d4829ddaf0d7",
+      "bytes": 8885
+    },
+    "SOURCE-PROVENANCE.json": {
+      "sha256": "03b4b28e5144db3258b5ab60ed8a9123d3e12093ad7fa61b18a1b38f8bf7aa0a",
+      "bytes": 7321
+    },
+    "docs/architecture.md": {
+      "sha256": "298300a0824b88152786bc4a45bb9a5a25400513b2653d5d692232abc6d75d06",
+      "bytes": 2359
+    },
+    "docs/configuration.md": {
+      "sha256": "9ef764d03a91f8aba3dfbc3d99c4b9db3517b9d9e39efed2cc5af1f8610d5ada",
+      "bytes": 2481
+    },
+    "docs/deployment.md": {
+      "sha256": "8b2e0740d8f658e86d223b68cf801364cd6026de777391500ba02898e4b4653e",
+      "bytes": 2182
+    },
+    "docs/lark-asgard-integration.md": {
+      "sha256": "05a48e2aeb95f3916bd897f5a3641215aaa96c6755fdffbcd987380b8effaffa",
+      "bytes": 1772
+    },
+    "docs/operations.md": {
+      "sha256": "1442e4187b53ce392679ef6c81cd3968c01a164c91a624f09f7b3e8016f9ee59",
+      "bytes": 2638
+    },
+    "docs/upstream-supervisor-contract.md": {
+      "sha256": "c2930a127b339b2ecafbbd759507e10ca048b4df5ef2df4102786fb1a35bb1e9",
+      "bytes": 805
+    },
+    "docs/validation-results.json": {
+      "sha256": "3bf4e1de2540b5a25d25aa722d07977b773b452bcc1f02eef585b605bfd04981",
+      "bytes": 922
+    },
+    "examples/environment.example.ps1": {
+      "sha256": "5f02fa1aeef3d83e19bcf7ed0a2dd8aefa9a35f49527101ed38604a915148473",
+      "bytes": 402
+    },
+    "examples/settings.json.example": {
+      "sha256": "9388b9c6e7eb0742a527e1e6d02e8ffe37d8c8bd7db516e4e9d6b3b697b34e59",
+      "bytes": 93
+    },
+    "tools/Install-Services.ps1": {
+      "sha256": "04eb56c2a6cf2da1c84bfdd6195f6b4a5246925be3c3fe75bc9feaab7966c40d",
+      "bytes": 3128
+    },
+    "tools/check_public_source.py": {
+      "sha256": "bd75bfac5ddc85849ceb86853c4894f13cf32ca2800c6df2994e7b87cab4ac8b",
+      "bytes": 1355
+    },
+    "tools/check_repository.py": {
+      "sha256": "dc0135772506bbaa0d69988fa67ccc800377432406d998738a0140a472546a97",
+      "bytes": 6278
+    },
+    "tools/prepare_workspace.py": {
+      "sha256": "56d77725ba4606e55c5e30f8d9bb5aa11a9073b52e8e0c5fe6837dce121a6949",
+      "bytes": 2434
+    },
+    "tools/run_tests.py": {
+      "sha256": "7cd12f4d4f1bda371489aea0981ef94922bdcc0c7b4636517a642736961d6150",
+      "bytes": 1496
+    },
+    "tools/update_manifests.py": {
+      "sha256": "4ee488220cf3b4da7ab66d7c28bd9e6b8f43ca00fb561d538204ed61cc987215",
+      "bytes": 1455
+    },
+    "workspace/.agents/skills/ad-p99-analysis/scripts/ad_p99.py": {
+      "sha256": "cbfab4ed908784206b3244f4b6a255f335cea1bb81de4ac545a84d11e8eb5613",
+      "bytes": 35513
+    },
+    "workspace/.agents/skills/chassis-business-routing/references/conversation-interaction.md": {
+      "sha256": "9b331b7b57e5585c73688240f9166fbb5cf4d1f2b293ee1c750b69c342ac5d5b",
+      "bytes": 6673
+    },
+    "workspace/.agents/skills/chassis-business-routing/references/input-normalization.md": {
+      "sha256": "f96f2a56adbe9e45642c6520a9ffb1e04b588e2ed40adbaec65cb9071b0bb86e",
+      "bytes": 1859
+    },
+    "workspace/.agents/skills/chassis-business-routing/references/semantic-input.md": {
+      "sha256": "1011ee010acfbdf44aebd2c6b2203e1d6ea85db21c3c6c0b4dd150a06afe2fd0",
+      "bytes": 5602
+    },
+    "workspace/.agents/skills/chassis-business-routing/scripts/intent_router.py": {
+      "sha256": "c21835a76ff2b3a9b9b0d8bd42d9ed2dfc14286f23cc2144d3b4e24f953a412b",
+      "bytes": 17771
+    },
+    "workspace/.agents/skills/chassis-business-routing/scripts/natural_input.py": {
+      "sha256": "671f82618b792d7fd7627bfcaae473e54aebe3441ae7d62e7f3f6df5fed950a5",
+      "bytes": 24339
+    },
+    "workspace/.agents/skills/chassis-business-routing/scripts/semantic_input.py": {
+      "sha256": "1bfc8e77f5c9a216bbf6a8f31669b02796f2cf3a40fb48a2d5b49ad9ec5ccc0c",
+      "bytes": 8608
+    },
+    "workspace/.agents/skills/chassis-business-routing/scripts/test_natural_input.py": {
+      "sha256": "878acf75d73f7a1a4c3c6d0e1fe7698670a2bce289a12f22ca30e3c8b2b97913",
+      "bytes": 16327
+    },
+    "workspace/.agents/skills/uroad-cloud-report/SKILL.md": {
+      "sha256": "0e451ec1f1f106f91a524e3de660d8321906d77b5ca0413e4e914761afc06a8d",
+      "bytes": 11775
+    },
+    "workspace/.agents/skills/uroad-cloud-report/VERSION": {
+      "sha256": "ebf265a1f0dc17cc7b11de6856d9d453cea67a5d7375c06f10cf4b3df3c035af",
+      "bytes": 14
+    },
+    "workspace/.agents/skills/uroad-cloud-report/agents/openai.yaml": {
+      "sha256": "5ad830371b575fb64e17159b9fed108bf43a4f327b05a7e771c989573763aec2",
+      "bytes": 41
+    },
+    "workspace/.agents/skills/uroad-cloud-report/references/can-signals.json": {
+      "sha256": "7e328efb91c6fc2418268a3c0118e6d4ed09db286bfdcc865673fb348a4b625f",
+      "bytes": 1816
+    },
+    "workspace/.agents/skills/uroad-cloud-report/references/ccconnect-request-context.md": {
+      "sha256": "92f197fae70f7202564196fe98dfb3ca3e62a38cb6007ebed54fa0161dc580e7",
+      "bytes": 1124
+    },
+    "workspace/.agents/skills/uroad-cloud-report/references/followup-contract.md": {
+      "sha256": "da1df810c446606b9860fe7653e06f1e50e6d90052e111ce39ee275829e1eee9",
+      "bytes": 1712
+    },
+    "workspace/.agents/skills/uroad-cloud-report/references/openclaw-attachment-delivery.md": {
+      "sha256": "e562146153aad5241bb1f4f7eafbfd0d7facfe1f3511754c98924e89c872890d",
+      "bytes": 4103
+    },
+    "workspace/.agents/skills/uroad-cloud-report/references/pipeline-lifecycle.md": {
+      "sha256": "2cff4f09e0ff0ad484604a21eb4a15051164ee8ab17e7c8363442ecffd435035",
+      "bytes": 4427
+    },
+    "workspace/.agents/skills/uroad-cloud-report/references/report-requirements.md": {
+      "sha256": "7b3425a31831b12280e2674d6ee77e9b0507feef184e3f502bbfc5c808cfc0c2",
+      "bytes": 3075
+    },
+    "workspace/.agents/skills/uroad-cloud-report/references/report-template.html": {
+      "sha256": "4dbf083819e1eb8675a06512b2aaacbe54b72171ffaf144b7c9c4c0ad4f53976",
+      "bytes": 35233
+    },
+    "workspace/.agents/skills/uroad-cloud-report/references/third-party-attribution.md": {
+      "sha256": "0576c4aec9635fda0a502ead2161d7cc5e9f712e163c3f6f1384fb70c244d507",
+      "bytes": 1419
+    },
+    "workspace/.agents/skills/uroad-cloud-report/references/uroad-log-guide.md": {
+      "sha256": "1c725391771f7f412a356462336591d0d16a171890510ba2611d573338bd1753",
+      "bytes": 23816
+    },
+    "workspace/.agents/skills/uroad-cloud-report/references/uroad-parse-requirements.md": {
+      "sha256": "0c461ccab9aca4119ce324aa62c8d9f8ef213b59ce6e1be201d6e3dadfa103b8",
+      "bytes": 25434
+    },
+    "workspace/.agents/skills/uroad-cloud-report/references/vehicle-log-api.md": {
+      "sha256": "5c18effe77b13aca95aab9c224e3d399770c14e53f0748820fbec18c2f8f75ec",
+      "bytes": 2967
+    },
+    "workspace/.agents/skills/uroad-cloud-report/requirements.txt": {
+      "sha256": "adad0f7ea404373e05112a548443083540606874299a011da44163a6eeedbbaa",
+      "bytes": 83
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/build_html_report.py": {
+      "sha256": "f8796dbaee82d9f734d8ea94a3d340ba82f7ecbc6eabd763e96816c9ddf50ac0",
+      "bytes": 30176
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/ccconnect_request_context.py": {
+      "sha256": "cac21e1618424c48ff8001cf7b68cc2c2051f136dbfa8a7fd7d9a075a51fe9c5",
+      "bytes": 3291
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/cheyun_api_adapter.py": {
+      "sha256": "2f09bbd93e5529a46a02e4b33c37a986a98995c348eaee305de20b44e4973325",
+      "bytes": 9776
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/cheyun_prod_client.py": {
+      "sha256": "c22daa592feff575f584029e32fbe65a22a4c5ed84ac8bb7a220f967d3a010b2",
+      "bytes": 19815
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/cheyun_uroad_adapter.py": {
+      "sha256": "6d6fbe3ed8d14375bf16f0f675b955e3d8a4282801d4dd4b64e76340d3e32325",
+      "bytes": 1990
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/delivery_bridge.py": {
+      "sha256": "094a13bcea3b4ddabedf2d13fdd07b943567803e5cc794e681c47cc49968e9b8",
+      "bytes": 16349
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/dispatch_uroad_worker.ps1": {
+      "sha256": "27b92c99f168411d8952d22f2313ae7f0a5557e5df17c99136ffa9b10c6b8cc6",
+      "bytes": 875
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/dispatch_uroad_worker.pyw": {
+      "sha256": "3cfcb93782331cdae4a77f8e8a3b09fd1aae3253262965a96bb28f613360387a",
+      "bytes": 2545
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/download_parquet_to_asc.py": {
+      "sha256": "11a77da32cfba509c50b42d92236365806f3b4622fb6db504913388b5ef5939f",
+      "bytes": 2400
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/followup_agent.py": {
+      "sha256": "dc5eb646ac4bbcb66134949d09c47bcb345b66c6a524ba0d432e81d2bd018d10",
+      "bytes": 5631
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/followup_answer.py": {
+      "sha256": "c8f846903f80004acc1fa4c0ed9fa3889d600131c3d75ee84b9aa0dce25585b9",
+      "bytes": 2456
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/followup_context.py": {
+      "sha256": "0a99214787edc6e1edaf09f60c648b1f2a6c8107f992dc9a5e70a62ba057d8fe",
+      "bytes": 14008
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/gear_labels.py": {
+      "sha256": "9f2134bbd4033751a68e0777942f9ad73e34bacc223536eabad5d6cab00a71d2",
+      "bytes": 1084
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/managed_subprocess.py": {
+      "sha256": "1333d749ac797a3fa91a63496b667013e893b6a4f2a18bbd51f1b0edf30f8e8d",
+      "bytes": 12795
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/manifest_builder.py": {
+      "sha256": "c6a6a386c2cb71c79ac898995908eb1acba0ba7fe9b45106cb8d9240e6b1145b",
+      "bytes": 6668
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/parquet_can_signals.py": {
+      "sha256": "5222b77884a1566203e984f1132433d763bee411d8051d61aab101f117a0fa2b",
+      "bytes": 17692
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/parquet_can_stream.py": {
+      "sha256": "080d56fa6dc9aac4d24735341fcf50ed53d4a26671b0a3da27aa4bafe1302782",
+      "bytes": 26685
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/parquet_to_asc.py": {
+      "sha256": "c37e659d346eb27d76a507567e5a2c61198ab1ee1ee0b555a97acbaa96fcbf11",
+      "bytes": 5648
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/parse_can_signals.py": {
+      "sha256": "132bd1164d9f7a89366d748aee1d7d96d10b0c39e30432ce38345c6e823f4867",
+      "bytes": 11129
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/parse_time_input.py": {
+      "sha256": "4ffb72a345f424c34997d21679b4155da469c304164b0c97b41b284a385e7709",
+      "bytes": 11450
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/parse_uroad.py": {
+      "sha256": "bb09b44f794cd6be089060316cf11e42be6a29751e7495aa120121d7bc64e1c5",
+      "bytes": 54901
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/process_time_chunks.py": {
+      "sha256": "8be44b412b3bf82f23ae46c2ee18252e143506e6533ce3d6d07d0405fec7478a",
+      "bytes": 48630
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/reason_labels.py": {
+      "sha256": "e3f30ed99b1a769358278de807955a75757bb4f64785d040a9f2dfb89f0a1a7a",
+      "bytes": 1927
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/render_performance_charts.py": {
+      "sha256": "576a0939c106d8b395c06b4cef61de0f6b6f663bd029a317b67b95ea04e4ea95",
+      "bytes": 13719
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/request_guard.py": {
+      "sha256": "6d9afb9e0bb7480df7d0e556e3d0970f2873de1f8e7cd03f0a334de3997c87b0",
+      "bytes": 1087
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/resume_uroad_task.py": {
+      "sha256": "4355b0c3ed88e0f3bda970f8edc01217ff0f01f99f84bdb90d266d4b50cf1e9b",
+      "bytes": 34487
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/retention_cleanup.py": {
+      "sha256": "9ee9ef38a07342580e78a62b1e2aab416a225d7ce2a2566de13e0d59922b89b9",
+      "bytes": 4128
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/run_uroad_pipeline.py": {
+      "sha256": "ddd4b79b1fd2e2d85ab2eb2068096d3ddeb864ecb4abe2400db09129aa86acc2",
+      "bytes": 50585
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/run_uroad_task.py": {
+      "sha256": "d62a67951bed707bc6a4aae4a1633dd23902588be6ba674efd83edb1fe54c724",
+      "bytes": 10341
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/scheduler.py": {
+      "sha256": "b7210e9413a4594613306eed182de7b94cbf5e739276198aea3527d0f7412dd2",
+      "bytes": 12108
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/stream_can_signals.py": {
+      "sha256": "3383995ecbe456790c741d6475f72590eff77b7f158ac256abf1333f4955c8ea",
+      "bytes": 17372
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/task_registry.py": {
+      "sha256": "6bc29233737198e2a3eab1ed8d76f26303168df67a917772650af4e23b62699c",
+      "bytes": 59087
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/task_status.py": {
+      "sha256": "61074af0fd129fabc636439e2a78e363548e60254bad3bc7d624e3bd59a14359",
+      "bytes": 4107
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/task_worker.py": {
+      "sha256": "96b01b4f455a9c674890e60032faf791495c47d3e3fcb07792504f62c08ef423",
+      "bytes": 3776
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/validate_report_artifact.py": {
+      "sha256": "57e795ac0f9c8fea034f26368a7ec1b89462e57915ea3c62e75e362f9c36ef47",
+      "bytes": 6916
+    },
+    "workspace/.agents/skills/uroad-cloud-report/scripts/verify_offline_zstandard.py": {
+      "sha256": "20ff5549018343980452a703826f5c005e2bf8a8e942086d1dc9624c85d8cdbd",
+      "bytes": 872
+    },
+    "workspace/.agents/skills/uroad-cloud-report/settings.json.example": {
+      "sha256": "9388b9c6e7eb0742a527e1e6d02e8ffe37d8c8bd7db516e4e9d6b3b697b34e59",
+      "bytes": 93
+    },
+    "workspace/.agents/skills/uroad-cloud-report/test_ccconnect_request_context.py": {
+      "sha256": "3cc1b8af75c86541c150e40d20330202496c62850818fc62369dba68397703d5",
+      "bytes": 1659
+    },
+    "workspace/.agents/skills/uroad-cloud-report/test_delivery_contract.py": {
+      "sha256": "663fe274945831d937f6a513c3f6a3abb427343bcc06e6c6b526bb3683536442",
+      "bytes": 1357
+    },
+    "workspace/.agents/skills/uroad-cloud-report/test_delivery_project.py": {
+      "sha256": "bf06e9c8f57afd477d88cdfd4384549b81c588e855237a5f53f28457c015064b",
+      "bytes": 731
+    },
+    "workspace/.agents/skills/uroad-cloud-report/test_native_delivery.py": {
+      "sha256": "1039764251fd3778cc81638d27f00bc1e709b8012524d3895bef53c90f01460a",
+      "bytes": 6552
+    },
+    "workspace/.agents/skills/uroad-cloud-report/test_natural_time_input.py": {
+      "sha256": "ec26f24777f9a1c6b755d1d0a49d29da6ba92bc5ecca4541864aff7a6da1e407",
+      "bytes": 20177
+    },
+    "workspace/.agents/skills/uroad-cloud-report/test_parse_time_input.py": {
+      "sha256": "6a05701f52716dd11442a8d8b0dcc053234d56772190f6ab33da788fecdfa547",
+      "bytes": 1419
+    },
+    "workspace/.agents/skills/uroad-cloud-report/test_pipeline_env_selection.py": {
+      "sha256": "06e8696520b2e98ea6d1b30907d4ed85e653b5fb558cf0dc61723bf93304a1e0",
+      "bytes": 1209
+    },
+    "workspace/.agents/skills/uroad-cloud-report/test_request_guard.py": {
+      "sha256": "ed89230d2babbde6e1519eeef5c4399a4020cab7c7837167e7ee62008fc64319",
+      "bytes": 1314
+    },
+    "workspace/.agents/skills/uroad-cloud-report/test_task_worker.py": {
+      "sha256": "c9581af5360cfb1367ab0a24874e6c4b50b4b876de6cfc3aaaaacd264d0c79fa",
+      "bytes": 5846
+    },
+    "workspace/.agents/skills/uroad-cloud-report/test_uroad_env.py": {
+      "sha256": "f2732a97cd77af348e4ffb698d53244249699d31f8af6740494185042eba3719",
+      "bytes": 2434
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_can_failure_diagnostics.py": {
+      "sha256": "ae5c4803d623d6463bea7984d855a4942b9a6a809e3b4695958c44cc504daced",
+      "bytes": 2192
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_can_index_ingestion.py": {
+      "sha256": "c7455f6175f36a1486dc1a766ccc9798641b589cdea8f9f784d226bd52f0d8a5",
+      "bytes": 3640
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_cloud_response_contract.py": {
+      "sha256": "8359fff96519f27c88664ed3a71e04b69421f9b8f4805785a4727e64472b9b05",
+      "bytes": 4004
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_concurrency_and_followup.py": {
+      "sha256": "0aefe08e2f4b43db5a11ccbf6a3d27e7dd04557e300d9c00407dde2425913232",
+      "bytes": 5291
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_delivery_retry_selection.py": {
+      "sha256": "3b4d42ec22217b5634a7bf934f92e5842ce2132afaa021f4984ba1ed6af4ca8f",
+      "bytes": 2584
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_durable_admission.py": {
+      "sha256": "2bfd1eee286dc9be89cad433ccc4cc0c43170c0a7ff65849eb74d420c57ed7d0",
+      "bytes": 9275
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_interrupted_recovery_claim.py": {
+      "sha256": "c391f49412e6e30ae1a3786bbd5c178a98af81196e9219b446f7422d57e914ed",
+      "bytes": 7235
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_native_dispatcher_launcher.py": {
+      "sha256": "95ce331e3f92a269e29feb41c89657519d1c2d75e499c1da7e29bfbdee18e5aa",
+      "bytes": 1720
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_owned_recovery_health.py": {
+      "sha256": "b688119fc13ec58554dd89409a4b583fa4f8bddc51eebf2420488d6d9d3766a9",
+      "bytes": 8103
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_parquet_can_acquire.py": {
+      "sha256": "1fd0eedfe40ae91ea91bfccdd07c3dff1bccf891ac12ab087cfe6dedd3457743",
+      "bytes": 16795
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_parquet_can_stream.py": {
+      "sha256": "841e407a2b054f3e89e2108242abcb22212e7963b0f93cbf75d4a341163fa8a7",
+      "bytes": 24308
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_parquet_to_asc.py": {
+      "sha256": "8c250f80111b31f0189f4def29cf430cc3e4e66f1573bc8490c637da5f15b831",
+      "bytes": 2044
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_parse_index_performance.py": {
+      "sha256": "39e608d1827539e01fe9a6c515a607677a088cb35cf697b706637a836776de02",
+      "bytes": 11559
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_pipeline_timeout_contract.py": {
+      "sha256": "0dfacbaca456ad7c6435df01d92f1b091b9ab7aaf2e69aa500561081b02acc5f",
+      "bytes": 19203
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_process_stage_diagnostics.py": {
+      "sha256": "05cf69e9394de9f736833e9686dbd0f68225f376ee9b46b2b2bec7aad2ad58d7",
+      "bytes": 15851
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_queue_claim_and_cancel.py": {
+      "sha256": "caf0bb7e55785af049e725251343941821ba8f8dfca15a9081c9d69456a5ee93",
+      "bytes": 7758
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_registry_process_death.py": {
+      "sha256": "6f8354446f7ec45414d52c11514188942dc1fa148ffb349e9267b5769b53f74f",
+      "bytes": 2265
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_retained_can_resume.py": {
+      "sha256": "36d40b68bfe82d9ad48809ea81373ebb08a96c6bd1b5b7f6c2863fd733bd5dc5",
+      "bytes": 29352
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_retained_recovery_claim.py": {
+      "sha256": "1c44049bae3030ca8ce70d6e044b6716b29a75c843aba62d8a72d8eb806431dd",
+      "bytes": 14009
+    },
+    "workspace/.agents/skills/uroad-cloud-report/tests/test_task_status.py": {
+      "sha256": "56dca0615e88ce41797544dd54ef457a90f38e39363c0eccc3cc9cf20ff992bc",
+      "bytes": 4464
+    },
+    "workspace/AGENTS.md": {
+      "sha256": "6eef368e74e64a2b8785fc36a2b2f015234f85a4a255cf7b93e4eef8aa7f053b",
+      "bytes": 1466
+    }
+  }
+}

@@ -1,86 +1,31 @@
-# 系统设计
+# 架构与边界
 
-## 1. 设计原则
-
-Uroad Log Analyzer 采用“平台交互 + 持久化任务 + 管道式分析”的应用结构。模型负责识别意图和生成用户可读回复；代码负责输入校验、状态、数据、报告和成功判定。
-
-```text
-Feishu / OpenClaw event
-        │
-        ▼
-request normalization ──► task registry / deduplication
-        │                         │
-        │                         ▼
-        └──────────────────► single task worker
-                                  │
-                                  ▼
-                         15-minute sequential slices
-                           ┌──────┴──────┐
-                           ▼             ▼
-                     uroad channel    CAN channel
-                           └──────┬──────┘
-                                  ▼
-                         evidence merge / SQLite
-                                  ▼
-                          self-contained HTML
-                                  ▼
-                        artifact validation gate
-                                  ▼
-                         attachment + delivery ack
+```mermaid
+flowchart TD
+    A[飞书正文和真实入站上下文] --> B[意图 / 时间规范化 / 受控依赖检查]
+    B --> C[先落盘再发布队列状态]
+    C --> D[独立调度与原子领取]
+    D --> E[同窗 Uroad 与 CAN 来源查询]
+    E --> F[并行下载和解析]
+    F --> G[来源与结果核对 / 合并]
+    G --> H[HTML 标准报告 / 内容与工件校验]
+    H --> I[原生附件投递 / 来源绑定回执]
+    I --> J[14 天任务保留数据 / 独立追问队列]
 ```
 
-这张结构图是代码路径的摘要，不代表平台侧未入库的执行器已经实现。
+| 模块 | 职责 |
+| --- | --- |
+| `run_uroad_task.py` / `parse_time_input.py` | 真实来源与时间校验、依赖检查、持久化受理、服务唤起 |
+| `task_registry.py` / `scheduler.py` / `task_worker.py` | 注册事务、领取令牌、跨进程锁、重型槽位与公平队列 |
+| `cheyun_prod_client.py` / `cheyun_api_adapter.py` | 固定 Prod/Test 来源、完整分页和下载契约 |
+| `parse_uroad.py` / `stream_can_signals.py` | Uroad 按来源、上下文、节点、时间索引关联；CAN 有界流式解析 |
+| `parquet_can_stream.py` / `parquet_can_signals.py` | 冻结来源、有限下载重试、批量读 Parquet、任务内 SQLite 排序去重 |
+| `run_uroad_pipeline.py` / `managed_subprocess.py` | 并行阶段、900 秒单步骤时限、所属进程树回收和诊断 |
+| `build_html_report.py` / `validate_report_artifact.py` | 标准报告、内容完整性和可交付工件校验 |
+| `delivery_bridge.py` | 精确来源会话、原生发送、附件 SHA/大小/来源回执和只补交付 |
+| `followup_context.py` / `followup_answer.py` / `followup_agent.py` | 保留期、来源授权、同任务串行问答和完成登记 |
+| `task_status.py` / `resume_uroad_task.py` / `retention_cleanup.py` | 只读查询、严格绑定恢复及独立保留期清理 |
 
-## 2. 代码单元
+业务内部 execution 与 delivery 独立：`completed` 表示标准报告已通过校验；`sent` 还须有正确来源、报告哈希、大小和原生确认构成的送达证据。不能以进程退出码或某一分支完成代替全链路完成。
 
-| 单元 | 关键文件 | 职责 |
-|---|---|---|
-| 请求与任务 | `run_uroad_task.py`、`task_registry.py`、`task_worker.py` | 时间规范化、请求上下文、注册、查重、领取与恢复 |
-| 主流水线 | `run_uroad_pipeline.py` | 配置预检、环境选择、执行锁、阶段编排和最终状态 |
-| 切片处理 | `process_time_chunks.py` | 时间切片、双通道并发、失败收敛和证据合并 |
-| uroad | `cheyun_uroad_adapter.py`、`parse_uroad.py` | 查询、下载和日志语义提取 |
-| CAN | `cheyun_prod_client.py`、`stream_can_signals.py` | 获取、流式解压、白名单信号提取 |
-| 报告 | `build_html_report.py`、`references/report-template.html` | 生成自包含交互报告 |
-| 交付 | `validate_report_artifact.py`、`delivery_bridge.py` | 路径门禁、附件候选和发送结果回写 |
-| 路由 | `app/supervisor/scripts/openclaw_skill_router.py` | 将消息确定性分类到一个业务路由 |
-| AD P99 | `app/ad-p99-analysis/scripts/` | 只读表格解析和差异计算 |
-
-## 3. 状态与权威边界
-
-任务注册表管理排队和跨阶段状态；单次 `run.json` 管理该次流水线的阶段、错误和 artifact 元数据。群聊历史、模型记忆和文件是否存在都不能替代这两个状态源。
-
-```text
-queued → claimed → running → completed | no_data | system_error | cancelled
-                           └────────────► delivery.pending → sent | failed
-```
-
-当前实现保留旧状态兼容，维护时不要在多个文件中分别推进同一状态。报告已完成但交付失败时，分析状态仍应保持完成。
-
-## 4. 并发与资源
-
-- `.pipeline-active.lock` 限制同一工作区只有一条重分析流水线；
-- `.task-worker.lock` 限制 worker 单实例；
-- 时间切片之间串行，同一切片只有 uroad/CAN 两条并发通道；
-- 子进程默认超时 900 秒；
-- CAN 数据逐文件处理并清理压缩源，不生成全量 ASC；
-- 状态查询和报告补发不应占用重分析槽位。
-
-## 5. 信任边界
-
-| 边界 | 不可信输入 | 控制 |
-|---|---|---|
-| 用户 → OpenClaw | VIN、时间、URL、自然语言 | 格式校验、路由互斥、请求上下文隔离 |
-| OpenClaw → 车云 | 环境、接口响应、下载地址 | 环境一致性、状态码/结构检查、host 白名单 |
-| 压缩文件 → 解析器 | 文件名、路径、内容和大小 | 流式处理、路径限制、失败清理 |
-| 分析 → HTML | 日志字段和文本 | 白名单数据、HTML 转义、自包含模板 |
-| HTML → 飞书 | 本地路径与发送结果 | canonical path 门禁、类型校验、messageId 回执 |
-
-## 6. 已知设计债务
-
-- `task-registry.json` 仍需要更强的原子写入和长期裁剪策略；
-- 残留锁的自动恢复需要在真实异常终止场景验证；
-- Supervisor 只有路由分类器，没有生产执行器和持久化；
-- AD P99 的 `comparison_key` 并发写入缺少进程锁和 TTL 清理；
-- 平台侧真实附件上传、消息发送和最终通知入口不在当前仓库中。
-
-这些事项属于待实现或待验证能力，不得在 README 或发布说明中描述为完成。
+每项任务仅使用 `outputs/uroad-report-runs/<job_id>/`。来源 message_id 重投才幂等；相同 VIN/时段的新来源是独立任务。默认两项重型任务、可用磁盘至少 20 GB；共享 Supervisor 部署以其全局串行策略为准，不叠加独立调度。

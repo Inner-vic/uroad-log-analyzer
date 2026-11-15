@@ -1,0 +1,38 @@
+{
+  "schema": "uroad-export-validation-v1",
+  "version": "2026.11.03.8",
+  "date": "2026-11-04",
+  "offline_full_suite": {
+    "status": "passed",
+    "tests": 286,
+    "passed": 286,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "groups": {
+      "root": 93,
+      "contracts": 193
+    }
+  },
+  "production_modules": {
+    "count": 36,
+    "byte_identical_to_source": true
+  },
+  "candidate_prepare": {
+    "status": "passed",
+    "same_physical_host": true,
+    "fresh_venv": true,
+    "dependencies_installed": false,
+    "services_registered": false,
+    "authorization_started": false,
+    "business_jobs_created": 0
+  },
+  "checks": {
+    "source_integrity": "passed",
+    "sensitive_information": "passed",
+    "python_syntax": "passed",
+    "powershell_syntax": "passed",
+    "local_markdown_links": "passed"
+  },
+  "online_end_to_end_in_new_environment": false
+}

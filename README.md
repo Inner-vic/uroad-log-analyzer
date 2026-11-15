@@ -1,99 +1,95 @@
-<p align="center"><sub>APPLICATION ENGINEERING · VEHICLE TELEMETRY</sub></p>
+# Uroad 日志分析
 
-<h1 align="center">Uroad Log Analyzer</h1>
+从获准车云来源获取同一 VIN、完整时间范围的 Uroad 与 CAN 日志，进行解析、关联、报告生成和内容校验，通过 CC Connect 原生会话交付 HTML 标准报告。报告完成后可在同一来源会话内对保留数据继续提问。
 
-<p align="center">
-  将 VIN 与时间范围转化为可追溯的 uroad / CAN 联合诊断证据，并交付为可离线打开的交互式 HTML 报告。
-</p>
+源码版本：`2026.11.03.8`。本项目在 [项目列表](https://github.com/Inner-vic?tab=repositories) 独立维护，与走查测试分开版本、部署、任务数据和故障恢复。
 
-<p align="center">
-  <img alt="uroad version" src="https://img.shields.io/badge/uroad-2026.09.07.1-2563EB?style=flat-square">
-  <img alt="Python versions" src="https://img.shields.io/badge/Python-3.9%E2%80%933.14-0F172A?style=flat-square&logo=python&logoColor=white">
-  <img alt="test count" src="https://img.shields.io/badge/tests-82%20passed-16A34A?style=flat-square">
-  <img alt="repository visibility" src="https://img.shields.io/badge/repository-public-2563EB?style=flat-square">
-</p>
+## 能力
 
-<p align="center">
-  <a href="docs/functional-spec.md">功能</a> ·
-  <a href="docs/architecture.md">设计</a> ·
-  <a href="docs/development.md">开发</a> ·
-  <a href="docs/deployment.md">部署</a> ·
-  <a href="docs/operations.md">运维</a> ·
-  <a href="docs/troubleshooting.md">排障</a> ·
-  <a href="docs/handover.md">交接</a>
-</p>
+- 自然语言 VIN 与时间解析，默认北京时间，保留原文、固定接收时间和可验证的规范化依据；无日期且无法确认的普通范围先询问。
+- 标准报告优先。首条消息的附加问题原样入队，在报告交付后基于本任务数据回答。
+- 完整时间窗一次取数，不按时间切片；Uroad / CAN 分支并行，逐步骤计时和超时控制，失败后排空所属进程。
+- auto 模式先查询 Prod，成功为空或缺少必要来源时按完整报告口径回退 Test，同报告来源保持同环境。鉴权、网络及响应异常不当作空数据。
+- 流式 CAN 解析；Parquet 备用链路按批读取、SQLite 排序和完整唯一点去重，保存来源清单、逐文件 SHA 和下载回执。
+- 持久任务队列、来源消息幂等、跨进程锁、按提问者公平调度；计算状态与交付状态分别记录。
+- 原生 HTML 附件只送回精确来源会话，完成发送且具有绑定回执才记为已送达。交付失败仅补发已有校验报告。
+- 每任务数据默认保留 14 天；只读状态查询、同任务追问和严格绑定的 CAN 失败恢复。
 
-<p align="center">
-  <img src="docs/assets/report-preview.png" width="100%" alt="使用脱敏演示数据生成的 uroad 日志分析报告首页">
-</p>
+## 目录
 
-> 上图来自当前报告页面的脱敏副本，展示的是应用真实交付形态，不是概念效果图。仓库中的 VIN、日期和业务数据均为演示用途。
-
-> **工程定位：** 这是一个应用开发与交付仓库，主线是可运行代码、测试、发布和运维闭环；需求说明服务于实现与验收，不把仓库包装成纯产品方案。
-
-## 这个应用解决什么问题
-
-排查一次车辆问题，往往要跨越请求理解、云端日志下载、压缩数据处理、CAN 信号核对、结论整理和附件交付。Uroad Log Analyzer 把这条链路收敛成可测试、可追踪、可恢复的应用工程：AI 负责理解和沟通，确定性代码负责数据、状态和成功判定。
-
-<table>
-  <tr>
-    <td width="33%" valign="top"><strong>双源证据</strong><br><br>同一环境内联合分析 <code>log_fsdA_service</code> 与 <code>msg_xcu</code>，避免跨环境拼接结论。</td>
-    <td width="33%" valign="top"><strong>受限执行</strong><br><br>按 15 分钟切片顺序处理，每片仅并发 uroad / CAN 两条通道，适配 8 GB 主机。</td>
-    <td width="33%" valign="top"><strong>可信交付</strong><br><br>报告必须通过路径和内容校验；上传成功不等于送达，只有明确消息回执才完成。</td>
-  </tr>
-</table>
-
-<p align="center">
-  <code>VIN + 时间范围</code> → <code>请求归一化</code> → <code>注册 / 查重</code> → <code>uroad + CAN</code> → <code>HTML 校验</code> → <code>附件交付</code>
-</p>
-
-## 应用组成
-
-| 单元 | 定位 | 当前状态 | 验证 |
-|---|---|---|---|
-| [`app/uroad-cloud-report`](app/uroad-cloud-report/) | uroad 主应用：任务、下载、分析、报告、校验与交付回写 | 当前核心基线 `2026.09.07.1` | 23 项本地测试通过 |
-| [`app/supervisor`](app/supervisor/) | OpenClaw 消息的确定性路由核心 | 原型；尚不包含完整执行器和持久化 | 12 项测试通过 |
-| [`app/ad-p99-analysis`](app/ad-p99-analysis/) | 双 Sheets 的 AD P99 对比能力 | 可选实验；未完成真实线上 E2E | 47 项测试通过 |
-
-“代码测试通过”不等于“线上闭环已验收”。真实车云查询、OpenClaw 调度、飞书附件发送和多人隔离需要在获授权环境中完成验收，状态边界见[功能说明](docs/functional-spec.md)。
-
-## 开发者快速开始
-
-仓库使用 [uv](https://docs.astral.sh/uv/) 创建临时、隔离的验证环境，不要求把依赖安装到系统 Python。
-
-```powershell
-uv run --no-cache --with pytest --with tzdata --with openpyxl==3.1.5 python scripts/verify.py
+```text
+README.md / docs/              部署、配置、架构、运维与验收
+examples/                      无真实凭据的设置和环境样例
+tools/                         源码校验、候选准备、调度安装与离线测试
+workspace/AGENTS.md             CC Connect 入口契约
+workspace/.agents/skills/
+  uroad-cloud-report/           完整业务源码、模板、信号定义、测试与 Skill
+  chassis-business-routing/    公共意图与时间规范化依赖
+  ad-p99-analysis/scripts/     公共路由所需纯解析模块，无 AD P99 执行服务
+SOURCE-PROVENANCE.json          原始生产源码 SHA 与导出差异
+SOURCE-MANIFEST.json            Uroad 版本源码清单
+REPOSITORY-MANIFEST.json        提交文件清单
 ```
 
-只验证一个单元：
+不包含真实 settings、飞书来源标识、任务运行目录、车辆日志、报告、身份凭据或第三方二进制。
+
+## 快速开始
+
+目标环境按当前 Windows 受控安装准备 CPython 3.13 x64。依赖固定为 [requirements.txt](workspace/.agents/skills/uroad-cloud-report/requirements.txt) 中的五项；业务入口会以隔离探针检查并只修复该白名单。不能根据普通模式 import 结果推断业务依赖缺失，也不根据聊天内容安装额外包。
 
 ```powershell
-uv run --no-cache --with pytest --with tzdata python -m pytest app/uroad-cloud-report -q
-uv run --no-cache python -m unittest discover -s app/supervisor/tests -v
-uv run --no-cache --with openpyxl==3.1.5 python -m unittest discover -s app/ad-p99-analysis/tests -v
+python -B -X utf8 tools/check_repository.py
+& $Python313 -B -X utf8 tools/prepare_workspace.py --workspace $NewWorkspace --base-python $Python313
 ```
 
-运行真实分析前必须在安全位置创建 `app/uroad-cloud-report/settings.json`，并从 OpenClaw 工作区执行；不要在 Skill 源码目录里直接跑生产入口。完整步骤见[开发指南](docs/development.md)和[部署指南](docs/deployment.md)。
+该工具仅准备全新目录和独立 venv，生成私有配置样例，不注册/启动任务、不初始化授权、不接入业务。按 [部署说明](docs/deployment.md) 准备固定依赖、CC Connect、车云身份、任务服务和保留期清理。已有环境先兼容合入，禁止整目录覆盖。
 
-## 仓库边界
+## 使用
 
-- `app/` 是唯一准备提交和维护的应用源码区。
-- `docs/` 是当前设计、操作和交接事实入口。
-- 本机遗留的运行数据、旧源码、历史压缩包、个人资料和真实配置由 `.gitignore` 隔离，不属于仓库。
-- `app/uroad-cloud-report/vendor/` 是离线运行所需的受控原生运行时；变更必须同步校验清单和许可证。
-- 公开仓库不保存公司服务域名；查询端点和下载白名单由受控部署环境注入。
+用户在飞书提交自然语言请求，无需命令。以下 VIN 为合成测试值：
 
-## 文档地图
+```text
+日志分析 DEM0VEH1CLEX00001，2026-11-03 09:53 至 10:10
+请在标准报告后分析这个时段的相关异常。
+```
 
-| 我要做什么 | 从这里开始 |
-|---|---|
-| 理解功能和边界 | [功能说明](docs/functional-spec.md) |
-| 修改模块或接口 | [系统设计](docs/architecture.md) · [开发指南](docs/development.md) |
-| 发布或回滚 | [部署指南](docs/deployment.md) · [版本来源](docs/release-provenance.md) |
-| 值班、巡检和清理 | [运维手册](docs/operations.md) |
-| 定位失败和恢复任务 | [故障排查](docs/troubleshooting.md) |
-| 接手项目 | [交接手册](docs/handover.md) · [维护责任](MAINTAINERS.md) |
+在已部署工作区使用受控解释器调用；上下文必须原样来自同一真实入站消息：
 
-## 安全与授权
+```powershell
+& $ControlledPython -B -X utf8 .agents/skills/uroad-cloud-report/scripts/run_uroad_task.py `
+  --vin $Vin --raw-time-expression $OriginalText --received-at $ReceivedAt `
+  --ccconnect-context $ContextHeader --question $AdditionalQuestion
+```
 
-不要把 VIN、原始日志、报告、账号、令牌、公司域名或飞书身份信息提交到 Git，也不要在 Issue 中粘贴。安全边界和报告方式见 [`SECURITY.md`](SECURITY.md)。项目目前没有开源许可证；公开可见不代表允许复制、修改或再分发。
+没有附加问题时省略 `--question`。默认真实落盘入队并唤起独立 worker，`queued` 不代表已经完成解析或送达。状态查询使用 `task_status.py` 的原话题唯一绑定或显式任务编号，不进入附加分析队列。
+
+追问入口 `followup_answer.py` 只验证来源、任务和队列；`ready_for_codex` 后由 Codex 在本任务的数据范围内分析并完成问题，不能跨任务查找最近报告。详情见 [运维](docs/operations.md)。
+
+## 验证
+
+```powershell
+& $ControlledPython -B -X utf8 tools/run_tests.py
+```
+
+默认运行技能根目录及 `tests/` 的离线用例。GitLab CI 运行静态完整性检查和纯输入解析回归；Windows 原生调度/进程回收与新环境首单仍须单独验收。验证记录见 [validation-results.json](docs/validation-results.json)。
+
+## 维护资料
+
+- [架构和数据流](docs/architecture.md)
+- [配置与外部依赖](docs/configuration.md)
+- [部署与回退](docs/deployment.md)
+- [状态、授权、追问和恢复](docs/operations.md)
+- [版本变更](CHANGELOG.md)
+- [提交约定](CONTRIBUTING.md)
+
+本仓库提供实际 Skill 及独立调度实现。源目录中的共享 Supervisor 文档作为 [接入约定](docs/upstream-supervisor-contract.md) 保留，Supervisor 宿主不在本项目中；采用共享宿主的部署应由该宿主管理入口和全局执行槽，不能同时接通两套调度。
+
+飞书接入说明：[CC Connect 原生附件与阿斯加德边界](docs/lark-asgard-integration.md)。Uroad 不需要向阿斯加德派发任务，不能把其他项目的 User OAuth 配置当作其发送前置条件。
+
+## GitLab 自动校验状态
+
+当前仅保留**手动流水线**：在 GitLab 的 Build → Pipelines → Run pipeline 明确启动。Push、合并请求和文档提交不自动执行，避免 Runner 镜像下载失败反复发送 Failed 通知。测试命令和检查步骤完整保留。
+
+公司 Runner 当前无法从 Docker Hub 拉取 Python 镜像，尚未运行到测试；需要维护人员配置获准内部镜像或修复镜像源后再手动验证，成功后另行恢复自动触发。历史 Failed 记录保留，不能当作测试失败或线上业务任务失败；暂停触发不代表 CI 已通过。
+
+公开副本的来源、示例配置与验证范围见 [发布说明](PUBLICATION.md)。
