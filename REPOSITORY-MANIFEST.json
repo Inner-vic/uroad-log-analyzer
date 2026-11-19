@@ -7,16 +7,12 @@
       "bytes": 86
     },
     ".github/workflows/source-checks.yml": {
-      "sha256": "de35d2ef722a943211ef083584802ee1bf186f342d8b318a2fc6edc4081e3f31",
-      "bytes": 535
+      "sha256": "f23a8d17deab62e6c73f99e08769984b1ce0fc29b80d63d0c2a5a5ee14de9e41",
+      "bytes": 538
     },
     ".gitignore": {
       "sha256": "c44751d3068feea17c3d8a2e68060cb3c40acf47e695c7b94ed34929a7ba368b",
       "bytes": 733
-    },
-    ".gitlab-ci.yml": {
-      "sha256": "4e17a08c319dca607b86d86071b853adcd0ca09ab7f8ad741c3ef71cd8bdd5ba",
-      "bytes": 617
     },
     "CHANGELOG.md": {
       "sha256": "2c3dacb6ff1f501f3fbec693502edb1a63f7fd57c251b4b4dfd71010e2431cf0",
@@ -27,15 +23,15 @@
       "bytes": 1089
     },
     "PUBLICATION.md": {
-      "sha256": "52045c0145a3b64bc8c8c45eb2353c03af8432e371e74d5ab54dc022c0b33360",
-      "bytes": 962
+      "sha256": "e98c19c1d02e19dcd6865da2b24ff3b377bdd8ab9891b2b1a7550aed58033119",
+      "bytes": 1026
     },
     "README.md": {
       "sha256": "4407558a917da6317cff0009a183a27a297c8a1a01274a4fc18d505fbd692a32",
       "bytes": 4366
     },
     "SOURCE-MANIFEST.json": {
-      "sha256": "37364c78d23c5c45726eea98ee9bb1b688de43d7d79d27c38525d4829ddaf0d7",
+      "sha256": "c599a8ac30f0fa8baeeffe996903191773759f05a36f91e8d83f9bcd16c9e5bf",
       "bytes": 8885
     },
     "SOURCE-PROVENANCE.json": {
@@ -55,16 +51,16 @@
       "bytes": 2182
     },
     "docs/lark-asgard-integration.md": {
-      "sha256": "05a48e2aeb95f3916bd897f5a3641215aaa96c6755fdffbcd987380b8effaffa",
-      "bytes": 1772
+      "sha256": "c995ad9d0b3f8b85048ac4a63f5cf167b051bcc3c58cb6afd9b654d569a1833f",
+      "bytes": 1758
     },
     "docs/operations.md": {
       "sha256": "1442e4187b53ce392679ef6c81cd3968c01a164c91a624f09f7b3e8016f9ee59",
       "bytes": 2638
     },
     "docs/project-guide.md": {
-      "sha256": "d324e1e7ca97414c6dfa667a9dba48f7caab78b1377b1fbd5c4dbee9197c0655",
-      "bytes": 4141
+      "sha256": "e719f2c5c0092003a347d0a1ab620528dd6c1d8429d1bce0a88e4f504e59e614",
+      "bytes": 6047
     },
     "docs/upstream-supervisor-contract.md": {
       "sha256": "c2930a127b339b2ecafbbd759507e10ca048b4df5ef2df4102786fb1a35bb1e9",
@@ -139,8 +135,8 @@
       "bytes": 16327
     },
     "workspace/.agents/skills/uroad-cloud-report/SKILL.md": {
-      "sha256": "0e451ec1f1f106f91a524e3de660d8321906d77b5ca0413e4e914761afc06a8d",
-      "bytes": 11775
+      "sha256": "4b8ea730fb54e3ee16903aead60d07a27ce8346992f435ea7528a7ec14110a8a",
+      "bytes": 11772
     },
     "workspace/.agents/skills/uroad-cloud-report/VERSION": {
       "sha256": "ebf265a1f0dc17cc7b11de6856d9d453cea67a5d7375c06f10cf4b3df3c035af",
@@ -187,8 +183,8 @@
       "bytes": 23816
     },
     "workspace/.agents/skills/uroad-cloud-report/references/uroad-parse-requirements.md": {
-      "sha256": "0c461ccab9aca4119ce324aa62c8d9f8ef213b59ce6e1be201d6e3dadfa103b8",
-      "bytes": 25434
+      "sha256": "13ab2bd6e84256adf22c2e5a3a5c49a2ce0e7f56360ba22189b2dd9bb4b4af93",
+      "bytes": 24709
     },
     "workspace/.agents/skills/uroad-cloud-report/references/vehicle-log-api.md": {
       "sha256": "5c18effe77b13aca95aab9c224e3d399770c14e53f0748820fbec18c2f8f75ec",

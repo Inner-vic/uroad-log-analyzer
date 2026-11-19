@@ -12,7 +12,7 @@
     "references/report-template.html": "4dbf083819e1eb8675a06512b2aaacbe54b72171ffaf144b7c9c4c0ad4f53976",
     "references/third-party-attribution.md": "0576c4aec9635fda0a502ead2161d7cc5e9f712e163c3f6f1384fb70c244d507",
     "references/uroad-log-guide.md": "1c725391771f7f412a356462336591d0d16a171890510ba2611d573338bd1753",
-    "references/uroad-parse-requirements.md": "0c461ccab9aca4119ce324aa62c8d9f8ef213b59ce6e1be201d6e3dadfa103b8",
+    "references/uroad-parse-requirements.md": "13ab2bd6e84256adf22c2e5a3a5c49a2ce0e7f56360ba22189b2dd9bb4b4af93",
     "references/vehicle-log-api.md": "5c18effe77b13aca95aab9c224e3d399770c14e53f0748820fbec18c2f8f75ec",
     "requirements.txt": "adad0f7ea404373e05112a548443083540606874299a011da44163a6eeedbbaa",
     "scripts/build_html_report.py": "f8796dbaee82d9f734d8ea94a3d340ba82f7ecbc6eabd763e96816c9ddf50ac0",
@@ -52,7 +52,7 @@
     "scripts/validate_report_artifact.py": "57e795ac0f9c8fea034f26368a7ec1b89462e57915ea3c62e75e362f9c36ef47",
     "scripts/verify_offline_zstandard.py": "20ff5549018343980452a703826f5c005e2bf8a8e942086d1dc9624c85d8cdbd",
     "settings.json.example": "9388b9c6e7eb0742a527e1e6d02e8ffe37d8c8bd7db516e4e9d6b3b697b34e59",
-    "SKILL.md": "0e451ec1f1f106f91a524e3de660d8321906d77b5ca0413e4e914761afc06a8d",
+    "SKILL.md": "4b8ea730fb54e3ee16903aead60d07a27ce8346992f435ea7528a7ec14110a8a",
     "test_ccconnect_request_context.py": "3cc1b8af75c86541c150e40d20330202496c62850818fc62369dba68397703d5",
     "test_delivery_contract.py": "663fe274945831d937f6a513c3f6a3abb427343bcc06e6c6b526bb3683536442",
     "test_delivery_project.py": "bf06e9c8f57afd477d88cdfd4384549b81c588e855237a5f53f28457c015064b",
@@ -85,5 +85,5 @@
     "tests/test_task_status.py": "56dca0615e88ce41797544dd54ef457a90f38e39363c0eccc3cc9cf20ff992bc",
     "VERSION": "ebf265a1f0dc17cc7b11de6856d9d453cea67a5d7375c06f10cf4b3df3c035af"
   },
-  "canonical_source_sha256": "11d26869c9e04055e7b5c1371594c2904c30ecefa192390097d58137cf66e5db"
+  "canonical_source_sha256": "5b8b7eae42c0154d0787f12266587d6fa8f434ca276705125d9e73323241818e"
 }
